@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import axios from 'axios'
+import Tableview from './Components/Tableview'
+import Navbar from './Components/Navbar'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super()
+    this.state = {countries: []}
+  }
+
+  componentDidMount() {
+    axios.get("https://restcountries.eu/rest/v2/all")
+      .then(results => {
+        this.setState({countries: results.data})
+      })
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <Navbar />
+        <Tableview countries={this.state.countries}/>
+      </div>
+    )
+  }
 }
 
-export default App;
+// function App() {
+
+//   const [loading, setLoading] = useState(true);
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//     const result = await axios('https://restcountries.eu/rest/v2/all');
+//     setData(result.data);
+//   }
+//   fetchData();
+// }, []);
+//   console.log(data)
+//   return (
+//     <div className="container">
+//       {data.map( country => {
+//         return (<div key={country.name}>{country.name}</div>)
+//       }
+//         )}
+//     </div>
+//   )
+// }
+
+// export default App;
