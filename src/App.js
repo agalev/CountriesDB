@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
-import Tableview from './Components/Tableview'
 import Navbar from './Components/Navbar'
+import Home from './Components/Home'
+import Error from './Components/Error'
+import Tableview from './Components/Tableview'
+import Gridview from './Components/Gridview'
 
 export default class App extends Component {
   constructor() {
@@ -19,34 +23,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        <Navbar />
-        <Tableview countries={this.state.countries}/>
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route path="/" render={(props) => <Home countries={this.state.countries} />} exact />
+            <Route path="/Tableview" render={(props) => <Tableview countries={this.state.countries} />} />
+            <Route path="/Gridview" render={(props) => <Gridview countries={this.state.countries} />} />
+            <Route component={Error} />
+          </Switch>
+        </BrowserRouter>
       </div>
     )
   }
 }
-
-// function App() {
-
-//   const [loading, setLoading] = useState(true);
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//     const result = await axios('https://restcountries.eu/rest/v2/all');
-//     setData(result.data);
-//   }
-//   fetchData();
-// }, []);
-//   console.log(data)
-//   return (
-//     <div className="container">
-//       {data.map( country => {
-//         return (<div key={country.name}>{country.name}</div>)
-//       }
-//         )}
-//     </div>
-//   )
-// }
-
-// export default App;

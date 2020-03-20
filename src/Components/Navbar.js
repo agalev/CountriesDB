@@ -12,41 +12,49 @@ import {
     DropdownMenu,
     DropdownItem,
     NavbarText
-  } from 'reactstrap';
+  } from 'reactstrap'
 
 export default class Tableview extends Component {
     render() {
         return (
-            <Navbar color="dark" dark expand="md">
-                <NavbarBrand href="#">Countries Database</NavbarBrand>
+            <Navbar color="dark" dark expand="md" style={{marginBottom: '1%'}}>
+                <NavbarBrand href="/">Countries Database</NavbarBrand>
                 <NavbarToggler />
                 <Collapse navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                            <NavLink href="./Components/">Components</NavLink>
+                            <NavLink href="/">Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                            <NavLink href="/Tableview">Table View</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/Gridview">Grid View</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
-                                Options
+                                Sort
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem>
-                                    Option 1
-                                </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
+                                    Alphabetically
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem>
-                                    Reset
+                                    By Region
+                                </DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                    By Population
+                                </DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                    By Area
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavbarText>Data from RestCountries API</NavbarText>
+                    <NavbarText>Data from RESTCountries API</NavbarText>
                 </Collapse>
       </Navbar>
         )
