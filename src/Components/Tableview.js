@@ -15,10 +15,10 @@ export default class Tableview extends Component {
     render() {
         return (
             <Table size="sm" dark striped bordered responsive hover>
-                <thead style={{backgroundColor: 'grey'}}>
+                <thead style={{backgroundColor: '#0F4C81'}}>
                     <tr>
                         <th>Flag</th>
-                        <th>Country Name</th>
+                        <th onClick={(event) => {}}>Country Name</th>
                         <th>Capital</th>
                         <th>Region</th>
                         <th>Population</th>
@@ -29,7 +29,7 @@ export default class Tableview extends Component {
                 <tbody>
                     {this.props.countries.map(country => {
                         return (
-                            <tr key={country.name} onClick={() => this.handleClick(country.name)}>
+                            <tr key={country.name} onClick={() => this.handleClick(country)}>
                                 <td><img src={country.flag} alt="flag" style={{height: '20px', width: '25px'}}/></td>
                                 <td>{country.name}</td>
                                 <td>{(country.capital) ? country.capital : 'N/A'}</td>
@@ -39,7 +39,7 @@ export default class Tableview extends Component {
                                 <td>{country.topLevelDomain}</td>
                             </tr>
                         )
-                    })}
+                    }).sort(function(a, b){return b-a})}
                 </tbody>
         </Table>
         )

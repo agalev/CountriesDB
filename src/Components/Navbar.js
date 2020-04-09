@@ -15,9 +15,12 @@ import {
   } from 'reactstrap'
 
 export default class Tableview extends Component {
+
+
+
     render() {
         return (
-            <Navbar color="dark" dark expand="md" style={{marginBottom: '1%'}}>
+            <Navbar color="dark" dark expand="md" style={{marginBottom: '1%', boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)', borderRadius: '15px'}}>
                 <NavbarBrand href="/">Countries Database</NavbarBrand>
                 <NavbarToggler />
                 <Collapse navbar>

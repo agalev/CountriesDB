@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import './App.css'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
+
+// Components
 import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import Error from './Components/Error'
@@ -17,6 +20,7 @@ export default class App extends Component {
     axios.get("https://restcountries.eu/rest/v2/all")
       .then(results => {
         this.setState({countries: results.data})
+        console.log('fetched API data')
       })
   }
 
